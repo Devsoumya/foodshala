@@ -20,6 +20,12 @@ if(isset($_POST['login'])) {
 
         //redirect user corresponding to userType (restaurant or customer)
         if ($user['userType'] == 2 ){
+            $sql = "SELECT * FROM restaurants WHERE userID = ?";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$user['id']]);
+            $restaurant = $stmt->fetch();
+            $_SESSION['restaurantId'] = $restaurant['id'];
+            $_SESSION['name'] = $restaurant['name'];
             header('Location: restaurant-menu.php');
         } elseif ($user['userType'] == 1) {
             header('Location: restaurants.php');

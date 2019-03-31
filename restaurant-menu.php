@@ -1,5 +1,29 @@
 <?php
 include 'include/common.php';
+include 'include/connection.php';
+
+if(isset($_POST['add']))
+{
+    $name = $_POST['name'];
+    $cusine = $_POST['cusine'];
+    $category = $_POST['category'];
+    $cost = $_POST['cost'];
+    $id=$_SESSION['restaurantId'];
+    $sql = "INSERT INTO menu(restaurantId,cost,name,category,type) VALUES(?,?,?,?,?)";
+    $query=$pdo->prepare($sql)->execute([$id,$cost,$name,$cusine, $category]);
+    if($query)
+    {
+        ?>
+        <script type="text/javascript">alert("Food Item sucessfully added");</script>
+        <?php
+    }
+    else
+    {
+      ?>
+        <script type="text/javascript">alert("Some error occured while adding the food item!! Please try adding again...");</script>
+        <?php  
+    }
+}
 ?>
 
 <div>
@@ -12,34 +36,54 @@ include 'include/common.php';
                 <th scope="col">Veg/Non-veg</th>
                 <th scope="col" colspan="2">Price</th>
             </tr>
-            <form>
+            <form action="" method="POST">
                 <tr>
-                    <th scope="col"><input required type="text" placeholder="Dish Name" class="form-control"></th>
-                    <th scope="col"><input required type="text" placeholder="Category"class="form-control"></th>
+                    <th scope="col"><input required name="name" type="text" placeholder="Dish Name" class="form-control"></th>
                     <th scope="col">
-                        <select required class="form-control">
+                    <select required name="cusine" class="form-control">
+                            <option value="North Indian">North Indian</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="South Indian">South Indian</option>
+                            <option value="Italian">Italian</option>
+                            <option value="Beverages">Beverages</option>
+                        </select></th>
+                    <th scope="col">
+                        <select required name="category" class="form-control">
                             <option value="1">Veg.</option>
                             <option value="2">Egg</option>
                             <option value="3">Nov-Veg.</option>
                         </select>
                     </th>
                     <th scope="col">
-                        <input required type="number" min="0" placeholder="Price (in Rupees)" class="form-control">
+                        <input required name="cost" type="number" min="0" placeholder="Price (in Rupees)" class="form-control">
                     </th>
                     <th scope="col">
-                        <button required type="submit" class="btn btn-sm btn-success"><i class="fas fa-plus"></i></button>
+                        <button required type="submit" name="add" class="btn btn-sm btn-success"><i class="fas fa-plus"></i></button>
                     </th>
                 </tr>
             </form>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">Paneer Tikka</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>$5</td>
-                <td><button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button></td>
-            </tr>
+            
+
+                <?php
+                 $id=$_SESSION['restaurantId'];
+                    $sql = "SELECT *, CASE WHEN type=1 THEN 'Veg.' WHEN type=2 THEN 'Egg' WHEN type=3 THEN 'Non Veg.' END as foodType FROM menu WHERE restaurantId = ?";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute([$id]);
+                    $items = $stmt->fetchAll();
+                    foreach ($items as $item) {
+                        echo "<tr>
+                        <th scope='row'>".$item['name']."</th>
+                            <td>".$item['category']."</td>
+                            <td>".$item['foodType']."</td>
+                            <td>".$item['cost']."</td>
+                            <td><button class='btn btn-danger btn-sm'><i class='fas fa-trash'></i></button></td>
+                            </tr>
+                        ";
+                    }
+                ?>
+                
 
             </tbody>
         </table>
