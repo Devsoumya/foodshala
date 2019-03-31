@@ -1,0 +1,23 @@
+html body {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.nav.navbar-nav.navbar-right ul li a {
+    color: white; !important;
+}
+
+.margin-t-1 {
+    margin-top : 10px ;
+}
+.brand-red-color {
+    color: #dc3545;!important;
+}
+.green-color {
+    color: green;
+}
+.red-color {
+    color: red;
+}
+.golden-color {
+    color: #ffc20f;
+}
