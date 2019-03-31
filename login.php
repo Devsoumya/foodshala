@@ -1,5 +1,8 @@
 <?php
 include 'include/common.php';
+if(isset($_SESSION['userId'])) {
+    header('Location: index.php');
+}
 if(isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];

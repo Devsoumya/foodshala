@@ -1,5 +1,8 @@
 <?php
 include 'include/common.php';
+if(isset($_SESSION['userId'])) {
+    header('Location: index.php');
+}
 if(isset($_POST['signup'])) {
 
     $name = $_POST['name'];
