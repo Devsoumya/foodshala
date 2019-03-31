@@ -42,6 +42,27 @@ if(isset($_POST['add']))
         <?php  
     }
 }
+if(isset($_POST['remove']))
+{
+    $isDeleted=1;;
+    $orderId=$_POST['orderId'];
+    $sql = "UPDATE menu SET isDeleted = ? WHERE id = ?";
+    $que=$pdo->prepare($sql)->execute([$isDeleted, $orderId]);
+    
+    ?>
+    <div class="container p-2">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong></strong>Item Successfully Removed.
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php
+
+}
 ?>
 
 <div>
@@ -96,7 +117,10 @@ if(isset($_POST['add']))
                             <td>".$item['category']."</td>
                             <td>".$item['foodType']."</td>
                             <td>₹ ".$item['cost']."</td>
-                            <td><button class='btn btn-danger btn-sm'><i class='fas fa-trash'></i></button></td>
+                            <form action='' method='POST'>
+                            <input type='hidden' name='orderId' value='".$item['id']."'>
+                            <td><button name='remove' class='btn btn-danger btn-sm'><i class='fas fa-trash'></i></button></td>
+                            </form>
                             </tr>
                         ";
                     }
