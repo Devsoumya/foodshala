@@ -11,7 +11,7 @@ if(isset($_GET['id'])) {
     $restaurantName = $restaurant['name'];
     $restaurantCusine = $restaurant['cusine'];
 
-    $sql = "SELECT * FROM menu where restaurantId = ?";
+    $sql = "SELECT * FROM menu where restaurantId = ? and isDeleted=0";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$_GET['id']]);
     $menu = $stmt->fetchAll();
@@ -39,7 +39,10 @@ if(isset($_GET['id'])) {
         </div>
         <div class="row margin-b-1">
             <div class="offset-md-2 col-md-5 col-12 col-sm-12">
-                <button class="btn-success btn btn-block">Place Order</button>
+                <form action="" method="post">
+                    <input type="hidden" value="" id="cart">
+                    <button type="submit" class="btn-success btn btn-block">Place Order</button>
+                </form>
             </div>
         </div>
         <?php
@@ -103,7 +106,5 @@ if(isset($_GET['id'])) {
         ?>
 
     </div>
-<form>
-    <input type="hidden" value="" id="cart">
-</form>
+
 

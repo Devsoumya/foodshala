@@ -24,12 +24,7 @@ $restaurants = $stmt->fetchAll();
                         3<i class="fas fa-star green-color"></i> <i><?php echo(rand(90,999)." ratings");
                             ?></i>
                     </div>
-                    <div class="col-md-4 col-6 col-sm-6">
-                        <h4 class="brand-red-color"><b><?php echo $restaurant['name']; ?></b></h4>
-                        <b><?php echo $restaurant['cusine']; ?></b><br>
-                        3<i class="fas fa-star green-color"></i> <i><?php echo(rand(90,999)." ratings");
-                            ?></i>
-                    </div>
+
                 </div>
             </div>
             <div class="card-body">

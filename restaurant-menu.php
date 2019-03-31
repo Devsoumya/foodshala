@@ -86,7 +86,7 @@ if(isset($_POST['add']))
 
                 <?php
                  $id=$_SESSION['restaurantId'];
-                    $sql = "SELECT *, CASE WHEN type=1 THEN 'Veg.' WHEN type=2 THEN 'Egg' WHEN type=3 THEN 'Non Veg.' END as foodType FROM menu WHERE restaurantId = ?";
+                    $sql = "SELECT *, CASE WHEN type=1 THEN 'Veg.' WHEN type=2 THEN 'Egg' WHEN type=3 THEN 'Non Veg.' END as foodType FROM menu WHERE restaurantId = ? and isDeleted=0";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute([$id]);
                     $items = $stmt->fetchAll();
