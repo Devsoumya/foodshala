@@ -53,6 +53,12 @@ ini_set('display_errors',1);
                 <a class="nav-item nav-link" href="order-details.php">My Orders<span class="sr-only">(current)</span></a>
             </div>
             <?php
+        } else {
+            ?>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="restaurants.php">Find Restaurants <span class="sr-only">(current)</span></a>
+            </div>
+            <?php
         }
         ?>
 
@@ -71,6 +77,9 @@ ini_set('display_errors',1);
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="signup.php"> <i class="fas fa-user-plus"></i></i> Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register_restaurant.php"> <i class="fas fa-plus"></i></i> Add Restaurant</a>
                 </li>
                 <?php
             }

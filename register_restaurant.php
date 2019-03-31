@@ -79,12 +79,12 @@ if (isset($_POST['signup'])) {
                     <form action="" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label><b>Restaurant Name</b></label>
-                            <input type="text" name="name" class="form-control" placeholder="Restaurant Name">
+                            <input required type="text" name="name" class="form-control" placeholder="Restaurant Name">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1"><b>Email address</b></label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                            <input required type="email" name="email" class="form-control" id="exampleInputEmail1"
                                    aria-describedby="emailHelp" placeholder="Enter email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                                 else.
@@ -92,20 +92,20 @@ if (isset($_POST['signup'])) {
                         </div>
                         <div class="form-group">
                             <label><b>Password</b></label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1"
+                            <input required type="password" name="password" class="form-control" id="exampleInputPassword1"
                                    placeholder="Password">
                         </div>
                         <div class="form-group">
                             <label><b>Mobile</b></label>
-                            <input type="text" name="mobile" class="form-control" placeholder="Mobile">
+                            <input required type="text" name="mobile" class="form-control" placeholder="Mobile">
                         </div>
                         <div class="form-group">
                             <label><b>Image</b></label>
-                            <input type="file" name="imageUpload" class="form-control" placeholder="Upload">
+                            <input required type="file" name="imageUpload" class="form-control" placeholder="Upload">
                         </div>
                         <div class="form-group">
                             <label><b>Approximate Cost For Two Persons</b></label>
-                            <input type="text" name="cost" class="form-control"
+                            <input required type="text" name="cost" class="form-control"
                                    placeholder="Approximate Cost For Two Persons in rupees">
                         </div>
                         <div class="form-group">
@@ -130,7 +130,7 @@ if (isset($_POST['signup'])) {
                         </div>
                         <div class="form-group">
                             <label><b>Restaurant Type?</b></label>
-                            <select name="preference" class="form-control">
+                            <select required name="preference" class="form-control">
                                 <option value="1">Veg.</option>
                                 <option value="2">Non-Veg.</option>
                             </select>
