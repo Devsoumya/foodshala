@@ -49,7 +49,6 @@ if (isset($_POST['signup'])) {
     $sql = "INSERT INTO users(name,email,password,userType,preference,mobile) VALUES(?,?,?,?,?,?)";
     $query = $pdo->prepare($sql)->execute([$name, $email, $password, $userType, $preference, $mobile]);
     $userId = $pdo->lastInsertId();
-    echo $userId;
 
     $sql1 = "INSERT INTO restaurants(userID,name,cusine,pureVeg,image,costForTwo) VALUES(?,?,?,?,?,?)";
     $query1 = $pdo->prepare($sql1)->execute([$userId, $name, $cusine, $preference, $target, $cost]);

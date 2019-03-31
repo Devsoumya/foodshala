@@ -16,7 +16,7 @@ $restaurants = $stmt->fetchAll();
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-2 col-6 col-sm-6">
-                        <img src="assets/img/dummy-restaurant.jpg" width="100%" height="auto" class="rounded">
+                        <img src="<?php echo $restaurant['image']; ?>" width="100%" height="80px" class="rounded">
                     </div>
                     <div class="col-md-4 col-6 col-sm-6">
                         <h4 class="brand-red-color"><b><?php echo $restaurant['name']; ?></b></h4>

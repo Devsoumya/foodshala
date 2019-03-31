@@ -38,12 +38,24 @@ ini_set('display_errors',1);
 
     <!-- Links -->
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Features</a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
-            <a class="nav-item nav-link disabled" href="#">Disabled</a>
-        </div>
+        <?php
+        if(isset($_SESSION['userType']) && $_SESSION['userType']==1) {
+        ?>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="restaurants.php">Find Restaurants <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="order.php">My Orders<span class="sr-only">(current)</span></a>
+            </div>
+        <?php
+        } elseif(isset($_SESSION['userType']) && $_SESSION['userType']==2) {
+            ?>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="restaurant-menu.php">My Menu <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="order-details.php">My Orders<span class="sr-only">(current)</span></a>
+            </div>
+            <?php
+        }
+        ?>
+
         <ul class="nav navbar-nav ml-auto">
             <?php
             if(isset($_SESSION['userId'])) {

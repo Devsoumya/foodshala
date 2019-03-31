@@ -26,6 +26,9 @@ function changeItemQuantity(itemId, operationType,cost) {
     cartItem = JSON.stringify(cartItem);
     if(cartItem=="{}") {
         cartItem='';
+        document.getElementById("placeOrderBtn").disabled = true;
+    } else {
+        document.getElementById("placeOrderBtn").disabled = false;
     }
     document.getElementById("cart").value= cartItem;
     document.getElementById("cartTotal").innerHTML= '';

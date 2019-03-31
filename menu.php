@@ -1,5 +1,9 @@
 <?php
 include 'include/common.php';
+if(!isset($_SESSION['userType'] )) {
+    $headerLocation = 'Location: login.php';
+    header($headerLocation);
+}
 if(isset($_GET['id'])) {
     $sql = "SELECT * FROM restaurants where id = ?";
     $stmt = $pdo->prepare($sql);
@@ -26,7 +30,7 @@ if(isset($_GET['id'])) {
     <div class="container">
         <div class="row margin-t-1 margin-b-1">
             <div class="col-md-2 col-4 col-sm-4">
-                <img src="assets/img/dummy-restaurant.jpg" width="75%" height="auto" class="rounded">
+                <img src="<?php echo $restaurant['image']; ?>" width="75%" height="auto" class="rounded">
             </div>
             <div class="col-md-4 col-6 col-sm-6">
                 <h4 class="brand-red-color"><b><?php echo $restaurant['name']; ?></b></h4>
@@ -39,9 +43,10 @@ if(isset($_GET['id'])) {
         </div>
         <div class="row margin-b-1">
             <div class="offset-md-2 col-md-5 col-12 col-sm-12">
-                <form action="" method="post">
-                    <input type="hidden" value="" id="cart">
-                    <button type="submit" class="btn-success btn btn-block">Place Order</button>
+                <form action="order.php" method="post">
+                    <input type="hidden" value="" id="cart" name="cart">
+                    <input type="hidden" value="<?php echo $_GET['id']; ?>" name="restaurantId">
+                    <button type="submit" id="placeOrderBtn" class="btn-primary btn btn-block" name="placeOrder" disabled>Place Order</button>
                 </form>
             </div>
         </div>
