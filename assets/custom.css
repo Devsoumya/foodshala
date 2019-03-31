@@ -9,6 +9,9 @@ html body {
 .margin-t-1 {
     margin-top : 10px ;
 }
+.margin-b-1 {
+    margin-bottom : 10px ;
+}
 .brand-red-color {
     color: #dc3545;!important;
 }
@@ -20,4 +23,10 @@ html body {
 }
 .golden-color {
     color: #ffc20f;
+}
+
+@media only screen and (min-width: 768px) {
+    .width-75 {
+        max-width: 75%;
+    }
 }
