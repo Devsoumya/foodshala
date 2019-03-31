@@ -29,7 +29,7 @@ ini_set('display_errors',1);
 <body>
 <nav class="navbar navbar-expand-sm bg-danger navbar-dark">
 
-    <a class="navbar-brand" href="/index.php">
+    <a class="navbar-brand" href="index.php">
         <img src="assets/img/logo.png" alt="Logo" style="width:150px;">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

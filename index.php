@@ -1,5 +1,8 @@
 <?php
 include 'include/common.php';
+if(isset($_SESSION['userType']) && $_SESSION['userType'] == 2) {
+    header('Location: restaurant-menu.php');
+}
 ?>
 <div class="container mt-3">
     <div class="text-center">

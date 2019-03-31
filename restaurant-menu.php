@@ -14,13 +14,31 @@ if(isset($_POST['add']))
     if($query)
     {
         ?>
-        <script type="text/javascript">alert("Food Item sucessfully added");</script>
+        <div class="container p-2">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong></strong> Food Item Added Successfully.
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php
     }
     else
     {
       ?>
-        <script type="text/javascript">alert("Some error occured while adding the food item!! Please try adding again...");</script>
+        <div class="container p-2">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong></strong> Some Error Ocurred. Please try again later.
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php  
     }
 }
@@ -77,7 +95,7 @@ if(isset($_POST['add']))
                         <th scope='row'>".$item['name']."</th>
                             <td>".$item['category']."</td>
                             <td>".$item['foodType']."</td>
-                            <td>".$item['cost']."</td>
+                            <td>₹ ".$item['cost']."</td>
                             <td><button class='btn btn-danger btn-sm'><i class='fas fa-trash'></i></button></td>
                             </tr>
                         ";
