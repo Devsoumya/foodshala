@@ -24,10 +24,10 @@ if(isset($_SESSION['userType']) && $_SESSION['userType'] == 2) {
                 <img src="assets/img/home-slider-1.jpeg" alt="Los Angeles" width="1500" height="400">
             </div>
             <div class="carousel-item">
-                <img src="assets/img/home-slider-1.jpeg" alt="Chicago" width="1500" height="400">
+                <img src="assets/img/home-slider-2.jpg" alt="Chicago" width="1500" height="400">
             </div>
             <div class="carousel-item">
-                <img src="assets/img/home-slider-1.jpeg" alt="New York" width="1500" height="400">
+                <img src="assets/img/home-slider-3.jpg" alt="New York" width="1500" height="400">
             </div>
         </div>
 
