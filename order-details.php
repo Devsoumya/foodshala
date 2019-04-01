@@ -45,7 +45,7 @@ $orders = $stmt->fetchAll();
                     $cart[$itemId]['quantity'] = $quantity;
                     $cart[$itemId]['name'] = $itemFromDB['name'];
                     $cart[$itemId]['cost'] = $itemFromDB['cost'];
-                    $cost += $itemFromDB['cost'];
+                    $cost += $quantity*$itemFromDB['cost'];
 
                 }
                 $order['totalCost'] = $cost;
@@ -60,7 +60,7 @@ $orders = $stmt->fetchAll();
                             </div>
                             <div class="col-md-4 col-6 col-sm-6">
                                 <h4 class="brand-red-color"><b><?php echo $order['name']; ?></b></h4>
-                                <b><?php echo date('D, d-M', strtotime($order['dateTime'])); ?></b><br>
+                                <b><?php echo date('D, d-M, H:i', strtotime($order['dateTime'])); ?></b><br>
                                 <i>₹ <?php echo $order['totalCost']; ?></i>
                             </div>
 
@@ -79,7 +79,7 @@ $orders = $stmt->fetchAll();
                                     <?php echo $itemDetails['quantity']; ?>
                                 </div>
                                 <div class="col-md-2 col-4 col-sm-4">
-                                    ₹ <?php echo $itemDetails['cost']; ?>
+                                    ₹ <?php echo ($itemDetails['quantity'])*($itemDetails['cost']); ?>
                                 </div>
                             </div>
                             <?php
